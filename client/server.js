@@ -3,6 +3,7 @@ const ejs = require('ejs')
 const app = express()
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const eventSchema = require('./models/eventSchema')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -18,8 +19,10 @@ mongoose.connect("mongodb://localhost:27017/eventsDB").then(() => {
 
 //API
 
-app.get("/", (req, res) => {
-    res.render("home")
+app.get("/", async (req, res) => {
+    const events = await eventSchema.find()
+    console.log(events);
+    res.render("home", { event: events })
 })
 app.get("/home", (req, res) => {
     res.render("home")
@@ -33,15 +36,21 @@ app.get("/eventRegister", (req, res) => {
 })
 
 
-app.post("/register", (req, res) => {
-    const fName = req.body.firstname
-    const lName = req.body.lastname
+app.post("/register", async (req, res) => {
+    const firstName = req.body.firstname
+    const lastName = req.body.lastname
     const address = req.body.address
     const place = req.body.place
     const date = req.body.date
     const time = req.body.time
     const events = req.body.events
-    console.log(fName, lName, address, place, date, time, events)
+    console.log(firstName, lastName, address, place, date, time, events)
+    const newEvent = await eventSchema.create({
+        firstName, lastName, address, place, date, time, events
+    })
+    console.log(newEvent);
+    const allEvents = await eventSchema.find()
+    res.render("home", { event: allEvents })
 })
 
 app.listen(3000, () => {
