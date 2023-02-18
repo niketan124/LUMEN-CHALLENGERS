@@ -1,6 +1,7 @@
 body {
     background-color: #fff;
     font-family: 'Poppins', sans-serif;
+    height: 100vh;
 }
 
 .main {
@@ -55,8 +56,9 @@ p {
     justify-content: center;
     align-items: center;
     padding: 30px;
-    height: 500px;
+    /* height: 500px; */
     border-radius: 20px;
+    transform: scale(0.8);
 }
 
 form {
@@ -81,6 +83,7 @@ button {
 }
 
 button:hover {
+    cursor: pointer;
     background-color: rgb(88, 242, 88);
     transform: scale(1.1);
 }
