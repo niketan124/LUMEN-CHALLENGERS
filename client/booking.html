@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./book.css">
     <title>Document</title>
 </head>
@@ -21,7 +24,19 @@
 
         </div>
         <div class="content">
-            <h1>Welcome to Event Booking Page</h1>
+            <div>
+                <h1 style="
+                background-color: black;
+                padding: 20px;
+                border-radius: 15px;
+                margin-bottom: 0;
+                ">Welcome to Event Booking Page</h1>
+            </div>
+            <form action="/bookEvent" method="post">
+                <h1>Event Name: <em>backend part</em></h1>
+                <h1>Description: <em>backend part</em></h1>
+                <button type="submit">Book</button>
+            </form>
         </div>
     </div>
 </body>
